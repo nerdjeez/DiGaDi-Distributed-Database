@@ -15,7 +15,7 @@ Membangun arsitektur basis data terdistribusi heterogen (PostgreSQL & MariaDB) l
 
 ## Topologi & Arsitektur Sistem
 
-![Diagram Arsitektur DiGaDi](docs\DiGaDi-architecture.png)
+![Diagram Arsitektur DiGaDi](.\docs\DiGaDi-architecture.png)
 
 ## Struktur Repositori
 
