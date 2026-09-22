@@ -71,3 +71,7 @@ Frontend data can be retrieved logically using a single, simple `SELECT` query o
 SELECT title, price, description FROM games_utuh WHERE game_id = 1;
 ```
 *(Any mutation operation, such as updating the `price` value in the Node 1 Windows environment, will instantly reflect when querying `games_utuh` in Node 2 Linux).*
+
+## Credits
+* **Database Engineering & Infrastructure:** [M. Alfarizi Aziz](https://github.com/nerdjeez)
+* **ERD & Logical Design:** [M. Valent Revolta](https://github.com/sunni-labeouf)
