@@ -15,33 +15,7 @@ Membangun arsitektur basis data terdistribusi heterogen (PostgreSQL & MariaDB) l
 
 ## Topologi & Arsitektur Sistem
 
-```mermaid
-flowchart LR
-    subgraph S1 ["Node 1: Windows 11 (Master)"]
-        direction TB
-        PG[("PostgreSQL\nIP: 192.168.56.1\nPort: 5433")]
-        style PG fill:#336791,stroke:#fff,stroke-width:2px,color:#fff
-        
-        DB1_Data["Data Global & Fragmen V1\n- users\n- developers\n- games_v1 (Katalog Utama)"]
-        PG --- DB1_Data
-    end
-
-    subgraph S2 ["Node 2: Linux Mint (Worker)"]
-        direction TB
-        MDB[("MariaDB\nLocalhost\nPort: 3306")]
-        style MDB fill:#003545,stroke:#fff,stroke-width:2px,color:#fff
-        
-        DB2_Data["Data Regional & Fragmen V2\n- library_indonesia\n- games_v2 (Deskripsi)"]
-        
-        Bridge["Jembatan Federasi\n- games_v1_remote (CONNECT)\n- games_utuh (Transparansi)"]
-        
-        MDB --- DB2_Data
-        MDB --- Bridge
-    end
-
-    %% Relasi Lintas OS
-    Bridge <==>|"ODBC Driver (TCP/IP)\nData Passthrough"| PG
-```
+![Diagram Arsitektur DiGaDi](docs\DiGaDi-architecture.png)
 
 ## Struktur Repositori
 
