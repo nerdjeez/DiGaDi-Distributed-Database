@@ -37,7 +37,7 @@ DiGaDi-Distributed-Database/
 
 ## Installation Guide (Reproducibility)
 
-### 1. Node 1 Configuration (Windows 11)
+### 1. Node 1 Configuration (Windows 10/11)
 - Ensure PostgreSQL is running on the Windows machine (using port `5433` in this test environment).
 - Execute the `node1_schema.sql` file to build the table structures and sequences.
 - Execute the `node1_seed.sql` file to insert the initial data.
