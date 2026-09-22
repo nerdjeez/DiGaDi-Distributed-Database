@@ -13,32 +13,14 @@ Building a heterogeneous distributed database architecture (PostgreSQL & MariaDB
 3. **Derived Horizontal Fragmentation:** Partitioning transaction table rows (*library* and *wishlists*) based on region/country (*user country*).
 4. **Pure Database-Level Fragmentation Transparency:** The application queries a single, unified table (`games_utuh`) without needing to know that a Cross-Node JOIN via the ODBC protocol is occurring behind the scenes.
 
+## Entity Relationship Diagram
+
+![DiGaDi ERD Diagram](docs/ERD.jpeg)
+
 ## System Topology & Architecture
 
 ![DiGaDi Architecture Diagram](docs/DiGaDi-architecture.png)
-```mermaid
-flowchart LR
- subgraph S1 ["Node 1: Windows 11 (Master)"]
-    direction TB
-        PG[("PostgreSQL\nIP: 192.168.56.1\nPort: 5433")]
-        DB1_Data["Data Global &amp; Fragmen V1\n- users\n- developers\n- games_v1 (Catalog)"]
-  end
 
- subgraph S2 ["Node 2: Linux Mint (Worker)"]
-    direction TB
-        MDB[("MariaDB\nLocalhost\nPort: 3306")]
-        DB2_Data["Data Regional &amp; Fragmen V2\n- library_indonesia\n- games_v2 (Description)"]
-        Bridge["Jembatan Federasi\n- games_v1_remote (CONNECT)\n- games_utuh (Transparency)"]
-  end
-  
-    PG --- DB1_Data
-    MDB --- DB2_Data & Bridge
-    Bridge L_Bridge_PG_0@<-- ODBC Driver (TCP/IP)\nData Passthrough --> PG
-
-    linkStyle 3 stroke:#757575,fill:none
-
-    L_Bridge_PG_0@{ curve: linear }
-```
 
 ## Repository Structure
 
